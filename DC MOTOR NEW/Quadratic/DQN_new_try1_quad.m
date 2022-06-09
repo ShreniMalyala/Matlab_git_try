@@ -1,5 +1,5 @@
-mdl='ddpg_new_try1_sim_quad';
-agentblk='ddpg_new_try1_sim_quad/RL Agent';
+mdl='dqn_new_try1_sim_quad';
+agentblk='dqn_new_try1_sim_quad/RL Agent';
 obsInfo = rlNumericSpec([3 1],...
     'LowerLimit',[-inf -1000 0 ]',...
     'UpperLimit',[ inf 5000 3500]');
@@ -12,7 +12,7 @@ actInfo.Name = 'PWM';
 numActions=actInfo.Dimension(1);
 
 env= rlSimulinkEnv(mdl,agentblk,obsInfo,actInfo);
-env.ResetFcn = @(in)localResetFcn_ref(in);
+env.ResetFcn = @(in)localResetFcn_ref_dqn(in);
 
 %% 
 
