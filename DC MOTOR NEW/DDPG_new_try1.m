@@ -50,6 +50,8 @@ critic = rlQValueRepresentation(criticNetwork,obsInfo,actInfo,'Observation',{'St
 actorNetwork = [
     featureInputLayer(numObservations,'Normalization','none','Name','State')
     fullyConnectedLayer(25, 'Name','actorFC1')
+    reluLayer('Name','actorRelu')
+    fullyConnectedLayer(25, 'Name','actorFC2')
     tanhLayer('Name','actorTanh')
     fullyConnectedLayer(numActions,'Name','Action')
     ];

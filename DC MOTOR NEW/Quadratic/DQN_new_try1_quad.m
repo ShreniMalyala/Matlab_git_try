@@ -22,7 +22,7 @@ dnn = [
     reluLayer('Name','CriticRelu1')
     fullyConnectedLayer(25, 'Name','CriticStateFC2')
     reluLayer('Name','CriticCommonRelu')
-    fullyConnectedLayer(length(actInfo.Elements),'Name','output')];
+    fullyConnectedLayer(2,'Name','output')];
 criticOpts = rlRepresentationOptions('LearnRate',0.001,'GradientThreshold',1);
 critic = rlQValueRepresentation(dnn,obsInfo,actInfo,'Observation',{'state'},criticOpts);
 agentOpts = rlDQNAgentOptions(...

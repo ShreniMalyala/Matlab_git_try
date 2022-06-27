@@ -17,7 +17,7 @@ env.ResetFcn = @(in)localResetFcn_ref(in);
 %%
 
 criticNet=[featureInputLayer(numObservations,'Normalization','none','Name','state')
-    fullyConnectedLayer(50,'Name','fc1')
+    fullyConnectedLayer(25,'Name','fc1')
     reluLayer('Name','relu1')
     fullyConnectedLayer(25,'Name','fc2')
     reluLayer('Name','relu2')
@@ -29,7 +29,7 @@ criticOpts = rlRepresentationOptions('LearnRate',1e-03,'GradientThreshold',1);
 critic = rlValueRepresentation(criticNet,obsInfo,'Observation',{'state'},criticOpts);
 
 actorNet= [featureInputLayer(numObservations,'Normalization','none','Name','state')
-    fullyConnectedLayer(100,'Name','fc1')
+    fullyConnectedLayer(150,'Name','fc1')
     reluLayer('Name','relu1')
     fullyConnectedLayer(2,'Name','out')];
 actorOpts = rlRepresentationOptions('LearnRate',1e-04,'GradientThreshold',1);
@@ -42,7 +42,7 @@ agent = rlACAgent(actor,critic,agentOpts);
 
 %% 
 % Training:
-Ts=0.01;
+Ts=0.1;
 Tf=2;
 maxepisodes = 500;
 maxsteps= ceil(Tf/Ts);
